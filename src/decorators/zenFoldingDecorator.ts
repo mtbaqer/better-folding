@@ -38,7 +38,7 @@ export default class ZenFoldingDecorator extends BetterFoldingDecorator {
     const lastVisibleLine = editor.visibleRanges[editor.visibleRanges.length - 1].end.line;
     const cachedFoldedLines = FoldedLinesManager.getFoldedLines(editor);
 
-    const zenFoldedLines = zenLines.filter((line) => cachedFoldedLines?.includes(line) || line === lastVisibleLine);
+    const zenFoldedLines = zenLines.filter((line) => cachedFoldedLines?.has(line) || line === lastVisibleLine);
     const decorationRanges = zenFoldedLines.map(
       (line) => new Range(line, 0, line, editor.document.lineAt(line).text.length)
     );
